@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        html, body{
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-Image: URL("imgs/pokemon-background.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+            padding: 10px 0 0;
+        }
+
+        h1 img {
+            height: 90px;
+        }
+
+        .bola {
+            width: 60px;
+            height: 60px;
+            background-color: #000000;
+            border-radius: 100px;
+            position: absolute;
+            background-Image: URL("imgs/pokemon0.png");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body onload="iniciar()">
+    <h1><img src="imgs/pokemon-logo.png" alt=""></h1>
+    <script>
+        function addBola() {
+            var bola = document.createElement("div");
+            bola.setAttribute("class", "bola");
+            var p1 = Math.floor(Math.random() * document.documentElement.clientWidth - 60);
+            if (p1 < 0) p1 = 10
+            var p2 = Math.floor(Math.random() * document.documentElement.scrollHeight - 110);
+            if (p2 < 110) p2 = 110
+            var cor = parseInt(Math.random() * 999999);
+            var background = parseInt(10 * Math.random());
+            bola.setAttribute("style", "left:" + p1 + "px;top:" + p2 + "px;background-color:#" + cor +"; background-image: URL('imgs/pokemon"+background+".png')");
+            bola.setAttribute("onclick", "estourar(this)");
+
+            document.body.appendChild(bola);
+        }
+
+        function estourar(elemento) {
+            document.body.removeChild(elemento);
+        }
+
+        function iniciar() {
+            setInterval(addBola, 1000);
+        }
+    </script>
+</body>
+
+</html>
